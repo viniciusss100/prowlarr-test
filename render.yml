@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: prowlarr
+    env: docker
+    dockerfilePath: ./Dockerfile
+    entrypoint: ["/entrypoint.sh"]
+    command: []
+    envVars:
+      - key: PUID
+        value: 1000
+      - key: PGID
+        value: 1000
+      - key: TZ
+        value: America/Recife
+    ports:
+      - port: 9696
+    disk:
+      - name: prowlarr-data
+        mountPath: /data
+        sizeGB: 10
