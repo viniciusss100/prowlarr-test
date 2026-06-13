@@ -4,7 +4,7 @@
   <SslPort>6969</SslPort>
   <EnableSsl>False</EnableSsl>
   <LaunchBrowser>True</LaunchBrowser>
-  <ApiKey>97c30889171341e1bf8e3f001a445645</ApiKey>
+  <ApiKey>cad9cf6e8edf4a929becad0a152ee29e</ApiKey>
   <AuthenticationMethod>Forms</AuthenticationMethod>
   <AuthenticationRequired>Enabled</AuthenticationRequired>
   <Branch>master</Branch>
