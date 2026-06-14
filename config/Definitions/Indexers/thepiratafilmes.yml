@@ -1,50 +1,64 @@
 id: thepiratafilmes
 name: ThepirataFilmes
 description: "ThepirataFilmes - Seu catálogo premium de filmes e séries"
+
 language: pt-BR
 type: public
 encoding: UTF-8
+
 links:
   - https://www.thepiratafilmes.online
-  - https://catalago.online/
 
 caps:
   categories:
     2000: Movies
     5000: TV
+
   modes:
     search: [q]
-    tv-search: [q, imdbid, tvdbid, tmdbid]
     movie-search: [q, imdbid, tmdbid]
+    tv-search: [q, imdbid, tmdbid]
 
 settings: []
 
 search:
   paths:
-    - path: "api/search"
+    - path: api/search
       method: get
       response:
         type: json
       inputs:
-        q: "{{ .Keywords }}"
-        tmdbid: "{{ .Query.TMDBID }}"
+        q: "{{ .Query.Q }}"
         imdbid: "{{ .Query.IMDBID }}"
+        tmdbid: "{{ .Query.TMDBID }}"
 
   rows:
     selector: "$"
 
   fields:
     title:
-      selector: "title"
+      selector: title
+
     size:
-      selector: "size"
-    download:
-      selector: "magnet_link"
+      selector: size
+
+    magnet:
+      selector: magnet_link
+
     seeders:
-      selector: "seed_count"
+      selector: seed_count
+
     imdbid:
-      selector: "imdb"
+      selector: imdb
+      filters:
+        - name: regexp
+          args: "(tt[0-9]+)"
+
+    tmdbid:
+      selector: tmdb
+
     details:
-      selector: "details"
+      selector: details
+
     category:
-      selector: "category"
+      selector: category
